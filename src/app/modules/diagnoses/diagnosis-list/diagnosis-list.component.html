@@ -1,0 +1,38 @@
+<div fxFlex fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-card fxLayoutAlign="center" class="diagnose-card glass">
+      <mat-card-header>
+        <mat-card-title class="title"> Add diagnose</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="glass">
+        <div class="" fxLayoutAlign="space-around center">
+          <app-diagnosis-form
+            (saveDiagnosis)="addDiagnosis($event)"
+          ></app-diagnosis-form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div
+    *ngIf="diagnoses$ | async as diagnoses; else notFound"
+    class="diagnosis-row"
+  >
+    <app-diagnosis-card
+      *ngFor="let diagnosis of diagnoses"
+      (removeDiagnosis)="removeDiagnosis($event)"
+      [diagnosis]="diagnosis"
+      [loading]="isDbLoading$ | async"
+      class="item"
+    >
+    </app-diagnosis-card>
+  </div>
+  <ng-template #notFound>
+    <mat-card>
+      <mat-card-title>
+        Either you have no diagnoses
+      </mat-card-title>
+    </mat-card>
+  </ng-template>
+
+  <ng-template #loadingTmpl>Loading diagnoses...</ng-template>
+</div>

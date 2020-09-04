@@ -1,0 +1,21 @@
+<div *ngIf="diagnosis$ | async as diagnosis; else spinner">
+  <mat-card class="diagnose-card mat-elevation-z8 glass">
+    <mat-card-subtitle
+      class="error"
+      *ngIf="errorMessages$ | async as errorMessage"
+    >
+      {{ errorMessage }}
+    </mat-card-subtitle>
+    <mat-card-content>
+      <app-diagnosis-form
+        [diagnosis]="diagnosis"
+        (saveDiagnosis)="saveDiagnosis($event)"
+        (sendError)="sendError($event)"
+      ></app-diagnosis-form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>

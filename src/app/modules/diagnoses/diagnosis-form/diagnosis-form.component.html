@@ -1,0 +1,25 @@
+<div class="diagnose-container" [formGroup]="diagnoseForm">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Diagnosis name"
+      formControlName="name"
+      required
+    />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Diagnosis description"
+      formControlName="description"
+      required
+      cdkTextareaAutosize
+    ></textarea>
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="addDiagnosis()">
+    Save
+  </button>
+</div>

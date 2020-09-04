@@ -1,0 +1,15 @@
+<mat-toolbar color="accent" class>
+  <div fxHide.gt-xs>
+    <button mat-icon-button>
+      <mat-icon (click)="openRightSidenav()">menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/home">Home</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="50px" class="navigation-items">
+      <li><a mat-button [routerLink]="'/diagnoses'"> Diagnoses </a></li>
+    </ul>
+  </div>
+</mat-toolbar>
